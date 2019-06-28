@@ -1,0 +1,16 @@
+{
+    "display_name": "Import Bug Test",
+    "module_name": "import_bug_test",
+    "repo_name": "import-bug-test",
+    "ankiweb_id": "",
+    "author": "Glutanimate",
+    "contact": "https://glutanimate.com",
+    "homepage": "https://github.com/glutanimate/import-bug-test",
+    "copyright_start": 2019,
+    "tags": "",
+    "conflicts": [],
+    "targets": [
+        "anki20",
+        "anki21"
+    ]
+}
