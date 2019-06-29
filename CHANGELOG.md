@@ -8,6 +8,11 @@ All notable changes to [Import Bug Test](https://ankiweb.net/shared/info/) will 
 
 ### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.1.1)
 
+### Changed
+
+- Added info on installed add-ons
+- Smaller fixes
+
 ## [0.1.0] - 2019-06-28
 
 ### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.1.0)
