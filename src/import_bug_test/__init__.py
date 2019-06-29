@@ -33,9 +33,6 @@
 Module-level entry point for the add-on into Anki 2.0/2.1
 """
 
-from anki import version as anki_version
-from aqt.utils import showInfo, showText
-
 errors = []
 
 try:
@@ -867,44 +864,57 @@ except Exception as e:
 
 ####
 
+from anki.hooks import addHook
+
 if errors:
-    
-    txt = """
-<h2>Bug Status: Affected</h2>
+    def showDebugInfo():
+        from aqt import mw
+        from anki import version as anki_version
+        from aqt.utils import showInfo, showText
+        
+        txt = """
+    <h2>Bug Status: Affected</h2>
 
-<p>It seems like your system is affected by a module import bug.</p>
+    <p>It seems like your system is affected by a module import bug.</p>
 
-<p>To report your findings, please copy the debug info below and post it 
-<a href="https://github.com/glutanimate/review-heatmap/issues/43">here</a>. 
-Feel free to uninstall "Import Bug Test" one you're done</p>
+    <p>To report your findings, please copy the debug info below and post it 
+    <a href="https://github.com/glutanimate/review-heatmap/issues/43">here</a>. 
+    Feel free to uninstall "Import Bug Test" one you're done</p>
 
-<p>Thanks so much again for helping with squashing this bug!</p>
+    <p>Thanks so much again for helping with squashing this bug!</p>
 
-<p><b>Debug info</b>:</p>
-"""
-    txt += "<div style='white-space: pre-wrap'>"
-    
-    if not anki_version.startswith("2.0"):
-        from aqt.utils import supportText
-        txt += "\n" + supportText() + "\n"
-    else:
-        from aqt import appVersion
-        from aqt.qt import QT_VERSION_STR, PYQT_VERSION_STR
-        txt += '<p>' + "Version %s" % appVersion + '\n'
-        txt += ("Qt %s PyQt %s\n\n") % (QT_VERSION_STR, PYQT_VERSION_STR)
-    
-    txt += "\n\n".join(error[0] + ":\n" + error[1] for error in errors)
-    
-    txt += "</div>"
-    
-    kwargs = dict(title="Import Bug Test", type="html")
-    
-    if not anki_version.startswith("2.0"):
-        kwargs["copyBtn"] = True
-    
-    showText(txt, **kwargs)
+    <p><b>Debug info</b>:</p>
+    """
+        txt += "<div style='white-space: pre-wrap'>"
+        
+        if not anki_version.startswith("2.0"):
+            from aqt.utils import supportText
+            txt += "\n" + supportText() + "\n"
+            txt += "Add-ons:\n\n" + repr(mw.addonManager.allAddons()) + "\n\n"
+        else:
+            from aqt import appVersion
+            from aqt.qt import QT_VERSION_STR, PYQT_VERSION_STR
+            txt += '<p>' + "Version %s" % appVersion + '\n'
+            txt += ("Qt %s PyQt %s\n\n") % (QT_VERSION_STR, PYQT_VERSION_STR)
+            txt += "Add-ons:\n\n" + repr(mw.addonManager.files()) + "\n\n"
+            
+        txt += "\n\n".join(error[0] + ":\n" + error[1] for error in errors)
+        
+        txt += "</div>"
+        
+        kwargs = dict(title="Import Bug Test", type="html")
+        
+        if not anki_version.startswith("2.0"):
+            kwargs["copyBtn"] = True
+        
+        showText(txt, **kwargs)
+        
 
 else:
-    showInfo("It seems like everything is working fine.<br>"
-             "Feel free to uninstall Import Bug Test!",
-             title="Import Bug Test")
+    def showDebugInfo():
+        from aqt.utils import showInfo
+        showInfo("It seems like everything is working fine.<br>"
+                "Feel free to uninstall Import Bug Test!",
+                title="Import Bug Test")
+
+addHook("profileLoaded", showDebugInfo)
