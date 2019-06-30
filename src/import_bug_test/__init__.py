@@ -878,10 +878,11 @@ if errors:
     <p>It seems like your system is affected by a module import bug.</p>
 
     <p>To report your findings, please copy the debug info below and post it 
-    <a href="https://github.com/glutanimate/review-heatmap/issues/43">here</a>. 
-    Feel free to uninstall "Import Bug Test" one you're done</p>
+    <a href="https://anki.tenderapp.com/discussions/add-ons/35343">here</a>. 
+    (no account needed).
+    Feel free to uninstall "Import Bug Test" once you're done</p>
 
-    <p>Thanks so much again for helping with squashing this bug!</p>
+    <p>Thanks so much for your help in tracking this issue down!</p>
 
     <p><b>Debug info</b>:</p>
     """
