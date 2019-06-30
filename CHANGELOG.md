@@ -4,6 +4,10 @@ All notable changes to [Import Bug Test](https://ankiweb.net/shared/info/) will 
 
 ## [Unreleased]
 
+## [0.2.0] - 2019-06-30
+
+### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.2.0)
+
 ## [0.1.1] - 2019-06-29
 
 ### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.1.1)
@@ -21,7 +25,8 @@ All notable changes to [Import Bug Test](https://ankiweb.net/shared/info/) will 
 
 - Initial release of Import Bug Test
 
-[Unreleased]: https://github.com/glutanimate/import-bug-test/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/glutanimate/import-bug-test/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/glutanimate/import-bug-test/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/glutanimate/import-bug-test/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/glutanimate/import-bug-test/compare/v0.0.0...v0.1.0
 
