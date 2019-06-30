@@ -8,6 +8,11 @@ All notable changes to [Import Bug Test](https://ankiweb.net/shared/info/) will 
 
 ### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.2.0)
 
+### Changed:
+
+- anki21: Added info on add-on activation state
+- Updated error report link
+
 ## [0.1.1] - 2019-06-29
 
 ### [Download](https://github.com/glutanimate/import-bug-test/releases/tag/v0.1.1)
