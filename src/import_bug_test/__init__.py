@@ -891,14 +891,17 @@ if errors:
         if not anki_version.startswith("2.0"):
             from aqt.utils import supportText
             txt += "\n" + supportText() + "\n"
-            txt += "Add-ons:\n\n" + repr(mw.addonManager.allAddons()) + "\n\n"
+            addmgr = mw.addonManager
+            txt += "Add-ons:\n\n" + "\n".join(
+                addmgr.annotatedName(d) for d in addmgr.allAddons()) + "\n\n"
         else:
             from aqt import appVersion
             from aqt.qt import QT_VERSION_STR, PYQT_VERSION_STR
             txt += '<p>' + "Version %s" % appVersion + '\n'
             txt += ("Qt %s PyQt %s\n\n") % (QT_VERSION_STR, PYQT_VERSION_STR)
             txt += "Add-ons:\n\n" + repr(mw.addonManager.files()) + "\n\n"
-            
+        
+        txt += "Import Errors:\n\n"
         txt += "\n\n".join(error[0] + ":\n" + error[1] for error in errors)
         
         txt += "</div>"
